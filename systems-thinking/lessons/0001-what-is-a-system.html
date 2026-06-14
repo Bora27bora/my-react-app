@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1 · What Is a System?</title>
+<style>
+  :root {
+    --ink: #2b2420;
+    --paper: #fdfbf6;
+    --accent: #3a6b5c;
+    --accent-light: #e7efec;
+    --muted: #8a7f74;
+    --rule: #e3dcd2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+    font-size: 19px;
+  }
+  .wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+  header.lesson-head {
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.25rem;
+  }
+  .kicker {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 2.1rem;
+    margin: 0.4rem 0 0.3rem;
+    line-height: 1.2;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-style: italic;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 2.6rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.3rem;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-top: 1.6rem;
+  }
+  p { margin: 0.9rem 0; }
+  blockquote {
+    margin: 1.2rem 0;
+    padding: 0.6rem 1.2rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    font-style: italic;
+    color: #3f4a45;
+  }
+  .citation {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: right;
+    margin-top: -0.6rem;
+    margin-bottom: 1rem;
+  }
+  .callout {
+    background: var(--accent-light);
+    border: 1px solid #cfe0da;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1.4rem 0;
+  }
+  .callout h3 { margin-top: 0; color: var(--accent); }
+  .anatomy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .anatomy-card {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 0.9rem;
+    background: #fff;
+  }
+  .anatomy-card h4 {
+    margin: 0 0 0.4rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .anatomy-card p { margin: 0.3rem 0; font-size: 0.95rem; }
+  @media (max-width: 640px) {
+    .anatomy-grid { grid-template-columns: 1fr; }
+  }
+  .test-list {
+    list-style: none;
+    padding: 0;
+  }
+  .test-list li {
+    margin: 0.5rem 0;
+    padding-left: 1.8rem;
+    position: relative;
+  }
+  .test-list li::before {
+    content: counter(test-counter) ")";
+    counter-increment: test-counter;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .test-list { counter-reset: test-counter; }
+
+  /* Quiz */
+  .quiz-item {
+    margin: 1.4rem 0;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    background: #fff;
+  }
+  .quiz-item p.q { margin-top: 0; font-weight: 600; }
+  .quiz-item input[type="text"] {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem;
+    width: 14em;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--paper);
+  }
+  .quiz-item button {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.85rem;
+    margin-left: 0.6rem;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .quiz-item button:hover { background: #2e5648; }
+  .answer {
+    display: none;
+    margin-top: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--accent-light);
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  .answer.shown { display: block; }
+
+  /* Apply exercise */
+  .apply-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .apply-item label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .apply-item .hint {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.6rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: #fff;
+    resize: vertical;
+    min-height: 4.5rem;
+  }
+
+  footer.lesson-foot {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  a { color: var(--accent); }
+  .links {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="lesson-head">
+    <div class="kicker">Thinking in Systems &middot; Lesson 1</div>
+    <h1>What Is a System?</h1>
+    <p class="subtitle">Why a Slinky bounces, a box doesn't, and what that has to do with your own habits.</p>
+  </header>
+
+  <section>
+    <h2>The Slinky</h2>
+    <p>
+      Donella Meadows opens the book with a demonstration. She holds a Slinky &mdash;
+      that long, loose toy spring &mdash; balanced on one palm, grips it partway down
+      with the other hand, then pulls the lower hand away. The Slinky drops, bounces,
+      yo-yos up and down on its own.
+    </p>
+    <p>
+      "What made the Slinky bounce like that?" she asks. Students say: <em>your hand
+      &mdash; you took it away.</em>
+    </p>
+    <p>
+      So she does the same thing with the box the Slinky came in. Balances it, grips
+      it, pulls her hand away. The box just hangs there. Nothing happens.
+    </p>
+    <blockquote>
+      "The answer clearly lies within the Slinky itself. […] The system, to a large
+      extent, causes its own behavior! An outside event may unleash that behavior,
+      but the same outside event applied to a different system is likely to produce
+      a different result."
+    </blockquote>
+    <div class="citation">&mdash; Introduction: The System Lens</div>
+    <p>
+      This is the idea the whole book builds on. <strong>A system's behavior comes
+      from its structure</strong> &mdash; not (mainly) from outside pokes and shoves.
+      Your hand triggered the bounce, but it didn't <em>cause</em> it &mdash; the
+      Slinky's own coiled structure did. Keep that distinction in mind; it's the
+      reason this lesson matters for your own life, not just for springs.
+    </p>
+  </section>
+
+  <section>
+    <h2>The anatomy of a system</h2>
+    <p>
+      Meadows defines a system as <strong>an interconnected set of elements that is
+      coherently organized in a way that achieves something</strong>. Pull that apart
+      and you get three ingredients. Every system &mdash; a tree, a football team, a
+      university, your morning routine &mdash; is made of all three.
+    </p>
+    <div class="anatomy-grid">
+      <div class="anatomy-card">
+        <h4>Elements</h4>
+        <p>The "things." Often visible and tangible &mdash; but not always.</p>
+        <p><em>Tree:</em> roots, trunk, leaves.</p>
+        <p><em>University:</em> students, professors, buildings &mdash; but also
+        intangibles like school pride.</p>
+      </div>
+      <div class="anatomy-card">
+        <h4>Interconnections</h4>
+        <p>The relationships that hold elements together &mdash; often flows of
+        <strong>information</strong> as much as physical stuff.</p>
+        <p><em>Tree:</em> water pressure signals between roots and leaves.</p>
+        <p><em>University:</em> admission standards, grades, money flows.</p>
+      </div>
+      <div class="anatomy-card">
+        <h4>Function / Purpose</h4>
+        <p>What the system <em>achieves</em> &mdash; deduced from how it behaves,
+        not from what anyone says it's for.</p>
+        <p><em>Tree:</em> grow, reproduce, survive.</p>
+        <p><em>University:</em> (allegedly) the communication of knowledge.</p>
+      </div>
+    </div>
+    <div class="citation">&mdash; Chapter 1: The Basics, "More Than the Sum of Its Parts" &amp; "Look Beyond the Players to the Rules of the Game"</div>
+  </section>
+
+  <section>
+    <h2>Is it a system, or just a pile of stuff?</h2>
+    <p>
+      Sand scattered on a road isn't a system &mdash; add some, remove some, and it's
+      still just sand. A football team is: remove enough players and it stops being
+      a football team. The book gives a four-question test for telling the
+      difference:
+    </p>
+    <ol class="test-list">
+      <li>Can you identify <strong>parts</strong>?</li>
+      <li>Do the parts <strong>affect each other</strong>?</li>
+      <li>Do the parts together produce an effect that's <strong>different from
+      each part on its own</strong>?</li>
+      <li>Does that effect <strong>persist over time</strong>, across a variety of
+      circumstances?</li>
+    </ol>
+    <p>
+      If the answer to all four is yes, you're looking at a system: something that
+      is, in Meadows's phrase, <strong>more than the sum of its parts</strong>.
+    </p>
+  </section>
+
+  <section>
+    <h2>The sentence that matters most for you</h2>
+    <p>
+      Of the three ingredients, <em>purpose</em> is the trickiest &mdash; and the
+      most useful for thinking about your own life. Here's the key line:
+    </p>
+    <blockquote>
+      "Purposes are deduced from behavior, not from rhetoric or stated goals."
+    </blockquote>
+    <div class="citation">&mdash; Chapter 1: The Basics</div>
+    <p>
+      Meadows's example: a frog turns left, right, then backward &mdash; but every
+      time, it catches a fly. The frog's "purpose" has nothing to do with which
+      direction it turns. It's about the flies. Likewise: if a government says it
+      cares about the environment but funds almost nothing toward it, environmental
+      protection is not &mdash; whatever the speeches say &mdash; what that system is
+      actually <em>for</em>.
+    </p>
+    <div class="callout">
+      <h3>Why this matters for your life</h3>
+      <p>
+        Your habits and routines are systems. They have a <em>stated</em> purpose
+        (the one you'd say out loud &mdash; "I want to be healthy," "I want to save
+        money") and a <em>revealed</em> purpose (whatever the system's actual,
+        repeated behavior is actually producing).
+      </p>
+      <p>
+        When those two purposes don't match, that gap is usually where the
+        interesting &mdash; and useful &mdash; information is. Systems thinking
+        won't tell you which purpose is "true." But it will stop you from arguing
+        with the stated one while the revealed one quietly keeps winning.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Check your recall</h2>
+    <p>Try to answer from memory before revealing each answer. Type something (or
+    nothing) into the box, then click "Show answer" to compare.</p>
+
+    <div class="quiz-item">
+      <p class="q">1. Meadows says a system is more than the sum of its &mdash; what?</p>
+      <input type="text" placeholder="your answer">
+      <button onclick="this.nextElementSibling.classList.toggle('shown')">Show answer</button>
+      <div class="answer">parts</div>
+    </div>
+
+    <div class="quiz-item">
+      <p class="q">2. Name the three components every system has.</p>
+      <input type="text" placeholder="your answer">
+      <button onclick="this.nextElementSibling.classList.toggle('shown')">Show answer</button>
+      <div class="answer">elements, interconnections, and a function/purpose</div>
+    </div>
+
+    <div class="quiz-item">
+      <p class="q">3. According to the book, how do you figure out a system's real purpose?</p>
+      <input type="text" placeholder="your answer">
+      <button onclick="this.nextElementSibling.classList.toggle('shown')">Show answer</button>
+      <div class="answer">by watching its behavior over time &mdash; not by reading its mission statement</div>
+    </div>
+
+    <div class="quiz-item">
+      <p class="q">4. Sand scattered on a road is <em>not</em> a system. Why not, using the four-question test?</p>
+      <input type="text" placeholder="your answer">
+      <button onclick="this.nextElementSibling.classList.toggle('shown')">Show answer</button>
+      <div class="answer">its parts don't affect each other or produce any combined effect &mdash; you can add or remove sand and nothing changes</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Apply it: map one system from your own life</h2>
+    <p>
+      Pick <strong>one</strong> recurring pattern from your own life &mdash; a
+      morning routine, a way you handle stress, a recurring argument, a spending
+      habit, anything that happens "again and again." Write short, honest notes
+      below. There's no save button &mdash; this is for your own thinking, and to
+      bring to your next session with your teacher.
+    </p>
+    <div class="apply-grid">
+      <div class="apply-item">
+        <label for="elements">Elements</label>
+        <div class="hint">What are the "things" involved? People, objects, money,
+        time, energy, mood &mdash; intangibles count.</div>
+        <textarea id="elements" placeholder="e.g. me, my phone, my bed, my morning coffee, my sense of dread about the inbox..."></textarea>
+      </div>
+      <div class="apply-item">
+        <label for="interconnections">Interconnections</label>
+        <div class="hint">How do those things affect each other? What "flows"
+        between them &mdash; information, money, emotion, effort?</div>
+        <textarea id="interconnections" placeholder="e.g. checking my phone first thing raises my stress, which makes me move slower, which..."></textarea>
+      </div>
+      <div class="apply-item">
+        <label for="purpose">Purpose &mdash; stated vs. revealed</label>
+        <div class="hint">What would you <em>say</em> this routine is for? Now look
+        only at what it actually, repeatedly produces. Are they the same thing?</div>
+        <textarea id="purpose" placeholder="Stated: I want a calm start to the day. Revealed (based on what actually happens): ..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Go deeper</h2>
+    <p>
+      Primary source for this lesson: <strong>the Introduction ("The System Lens")
+      and the first two sections of Chapter 1 ("The Basics")</strong> in
+      <em>Thinking in Systems: A Primer</em> &mdash; you're already reading these.
+      Everything above is drawn from there.
+    </p>
+    <p>
+      For a quick refresher later, see the reference card for this lesson, and the
+      full list of curated resources for this workspace.
+    </p>
+    <div class="links">
+      <a href="../reference/0001-system-anatomy.html">Reference card: System Anatomy &amp; the "Is it a system?" test &rarr;</a>
+      <a href="../RESOURCES.md">All resources &rarr;</a>
+    </div>
+  </section>
+
+  <footer class="lesson-foot">
+    <p>
+      <strong>Stuck, curious, or disagree with something?</strong> Ask your teacher
+      &mdash; that's literally what this workspace is for. Good follow-ups for this
+      lesson: "What's an example where a system's stated and revealed purpose
+      <em>do</em> match?" or "Is a single habit really a whole system, or part of a
+      bigger one?"
+    </p>
+    <p>
+      When you're ready for the next lesson (stocks and flows &mdash; the rest of
+      Chapter 1), just say so.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

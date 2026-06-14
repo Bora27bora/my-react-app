@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference · System Anatomy</title>
+<style>
+  :root {
+    --ink: #2b2420;
+    --paper: #fdfbf6;
+    --accent: #3a6b5c;
+    --accent-light: #e7efec;
+    --muted: #8a7f74;
+    --rule: #e3dcd2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    font-size: 17px;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+  .kicker {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 1.7rem;
+    margin: 0.3rem 0 1.4rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.6rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+    margin: 1.6rem 0 0.5rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .def {
+    font-size: 1.1rem;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    margin: 0.4rem 0 1.2rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.4rem 0 1.2rem;
+    font-size: 0.95rem;
+  }
+  th, td {
+    border: 1px solid var(--rule);
+    padding: 0.5rem 0.7rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent-light);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+  .test-list {
+    margin: 0.4rem 0 1.2rem;
+    padding-left: 1.4rem;
+  }
+  .test-list li { margin: 0.3rem 0; }
+  .principle {
+    font-style: italic;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    margin: 0.4rem 0 1.2rem;
+  }
+  footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  a { color: var(--accent); }
+  @media print {
+    body { font-size: 13px; }
+    .wrap { padding: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Thinking in Systems &middot; Reference 1</div>
+  <h1>System Anatomy</h1>
+
+  <h2>Definition</h2>
+  <div class="def">
+    A <strong>system</strong> is an interconnected set of elements that is
+    coherently organized in a way that achieves something. It is
+    <strong>more than the sum of its parts</strong>.
+  </div>
+
+  <h2>The three components</h2>
+  <table>
+    <tr>
+      <th>Component</th>
+      <th>What it is</th>
+      <th>Example (tree / university)</th>
+    </tr>
+    <tr>
+      <td><strong>Elements</strong></td>
+      <td>The "things" &mdash; often visible, but can be intangible (pride,
+      morale, trust).</td>
+      <td>Roots, trunk, leaves &middot; Students, professors, buildings, school
+      pride</td>
+    </tr>
+    <tr>
+      <td><strong>Interconnections</strong></td>
+      <td>Relationships holding elements together &mdash; often
+      <em>information flows</em> as much as physical ones.</td>
+      <td>Water-pressure signals between roots/leaves &middot; Admissions
+      standards, grades, money flows</td>
+    </tr>
+    <tr>
+      <td><strong>Function / Purpose</strong></td>
+      <td>What the system achieves &mdash; <em>deduced from behavior</em>, not
+      from what it claims.</td>
+      <td>Grow, reproduce, survive &middot; (Allegedly) communicate
+      knowledge</td>
+    </tr>
+  </table>
+
+  <h2>Is it a system? (4-question test)</h2>
+  <ol class="test-list">
+    <li>Can you identify <strong>parts</strong>?</li>
+    <li>Do the parts <strong>affect each other</strong>?</li>
+    <li>Do the parts together produce an effect <strong>different from each
+    part alone</strong>?</li>
+    <li>Does that effect <strong>persist over time</strong>, across varying
+    circumstances?</li>
+  </ol>
+  <p style="margin-top:-0.6rem; font-size:0.9rem; color:var(--muted);">
+    All four "yes" &rarr; it's a system. (Sand on a road fails the test; a
+    football team passes it.)
+  </p>
+
+  <h2>The core principle</h2>
+  <div class="principle">
+    "Purposes are deduced from behavior, not from rhetoric or stated goals."
+    &mdash; Every system has a <em>stated</em> purpose and a <em>revealed</em>
+    purpose (what it actually, repeatedly produces). Watch for the gap between
+    them.
+  </div>
+
+  <footer>
+    Source: <em>Thinking in Systems: A Primer</em> &mdash; Introduction ("The
+    System Lens") and Chapter 1 ("The Basics"). See
+    <a href="../lessons/0001-what-is-a-system.html">Lesson 1: What Is a
+    System?</a> for the full walkthrough and exercises.
+  </footer>
+</div>
+</body>
+</html>
