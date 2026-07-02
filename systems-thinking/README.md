@@ -8,6 +8,12 @@ built with the [`/teach` skill](../.claude/skills/teach/SKILL.md).
 Open [`lessons/0001-what-is-a-system.html`](./lessons/0001-what-is-a-system.html)
 in a browser — that's Lesson 1.
 
+Then play [`lessons/0002-loopline-miami.html`](./lessons/0002-loopline-miami.html)
+— **LOOPLINE MIAMI**, a neon top-down arcade where each floor is a live system
+simulation: stocks & flows with delays, dueling balancing loops, shifting loop
+dominance, and the Success-to-the-Successful trap with three leverage-point
+interventions. Keyboard required (WASD + Q/E + SPACE).
+
 ## Layout
 
 - `MISSION.md` — why you're learning this, and what success looks like

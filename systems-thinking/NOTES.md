@@ -17,6 +17,13 @@ _Thinking in Systems: A Primer_ by Donella H. Meadows (ed. Diana Wright). Struct
   - Ch 7. Living in a World of Systems
 - Appendix: Glossary, Summary of Systems Principles, Springing the System Traps, Places to Intervene, Guidelines for Living in a World of Systems
 
+## Teaching preferences
+
+- The user asked for a Hotline Miami–style interactive game to practice with —
+  they respond well to game-like, dynamic practice environments, not just
+  reading + quizzes. Lesson 0002 (LOOPLINE MIAMI) is that game; consider
+  game-mechanic framings for future skill practice too.
+
 ## Working notes
 
 - Lessons should track roughly alongside the user's progress through the book — check in each session on which chapter they're currently reading.
